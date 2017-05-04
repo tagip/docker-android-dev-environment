@@ -5,7 +5,7 @@ FROM ubuntu:16.10
 RUN dpkg --add-architecture i386 && \
   apt-get update && \
   apt-get install -yq libc6:i386 libstdc++6:i386 zlib1g:i386 libncurses5:i386 --no-install-recommends && \
-  apt-get install -yq --no-install-recommends nodejs npm git bzip2 curl openjdk-8-jdk unzip && \
+  apt-get install -yq --no-install-recommends nodejs npm git bzip2 curl openjdk-8-jdk unzip zipalign && \
   ln -s /usr/bin/nodejs /usr/bin/node && \
   node -v && \
   npm -v && \
@@ -25,7 +25,7 @@ ENV ANDROID_SDK_URL http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
 RUN curl -L "${ANDROID_SDK_URL}" | tar --no-same-owner -xz -C /usr/local
 ENV ANDROID_HOME /usr/local/android-sdk-linux
 ENV ANDROID_SDK /usr/local/android-sdk-linux
-ENV PATH ${ANDROID_HOME}/tools:$ANDROID_HOME/platform-tools:${ANDROID_HOME}/build-tools/25.0.3/bin:$PATH
+ENV PATH ${ANDROID_HOME}/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # Install Android SDK components
 # License Id: android-sdk-license-ed0d0a5b
