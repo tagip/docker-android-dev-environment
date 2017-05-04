@@ -14,7 +14,7 @@ RUN dpkg --add-architecture i386 && \
   rm -rf /var/lib/apt/lists/*
 
 # Install cordova, bower and grunt with npm
-RUN npm install -g cordova bower grunt-cli && \
+RUN npm install -g cordova@6.5.0 bower grunt-cli && \
   npm cache clean && \
   cordova -v && \
   grunt -V && \
