@@ -37,13 +37,6 @@ ENV GOOGLE_COMPONENTS extra-android-m2repository,extra-google-m2repository
 RUN echo y | android update sdk --no-ui --all --filter "${ANDROID_COMPONENTS}" ; \
   echo y | android update sdk --no-ui --all --filter "${GOOGLE_COMPONENTS}"
 
-# Install gradle
-RUN curl -L https://services.gradle.org/distributions/gradle-3.4.1-bin.zip > gradle-3.4.1-bin.zip && \
-  mkdir /opt/gradle && \
-  unzip -d /opt/gradle gradle-3.4.1-bin.zip && \
-  rm gradle-3.4.1-bin.zip
-ENV PATH $PATH:/opt/gradle/gradle-3.4.1/bin
-
 # Cleaning up
 RUN apt-get remove -y curl unzip && \
   apt-get clean && \
